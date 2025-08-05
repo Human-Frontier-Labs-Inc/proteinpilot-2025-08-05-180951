@@ -1,0 +1,298 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ===== EXISTING MODELS FROM TEMPLATE =====
+
+model UserApiLimit {
+  id         String   @id @default(cuid())
+  userId     String   @unique
+  count      Int      @default(0)
+  createdAt  DateTime @default(now())
+  updateAt   DateTime @updatedAt
+}
+
+model UserSubscription {
+  id                     String    @id     @default(cuid())
+  userId                 String    @unique
+  stripeCustomerId       String?   @unique @map(name: "stripe_customer_id")
+  stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id")
+  stripePriceId          String?   @map(name: "stripe_price_id")
+  stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
+}
+
+// ===== NEW MODELS FOR PROTEINPILOT =====
+
+// Extended user profile for health data
+model UserProfile {
+  id                  String   @id @default(cuid())
+  userId              String   @unique // Clerk user ID
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  
+  // Health & fitness data
+  proteinGoalDaily    Float?   // Daily protein goal in grams
+  calorieGoalDaily    Float?   // Daily calorie goal
+  weight              Float?   // Current weight (encrypted)
+  height              Float?   // Height (encrypted)
+  activityLevel       String?  // sedentary, light, moderate, active, very_active
+  
+  // Dietary preferences
+  dietaryRestrictions String[] // vegetarian, vegan, gluten-free, etc.
+  allergies           String[] // nuts, dairy, shellfish, etc.
+  
+  // Privacy settings
+  shareDataForResearch Boolean @default(false)
+  allowNotifications   Boolean @default(true)
+  
+  // Relations
+  foodLogs     FoodLog[]
+  mealPlans    MealPlan[]
+  customFoods  CustomFood[]
+  favorites    FavoriteFoodItem[]
+}
+
+// Food items database
+model FoodItem {
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // Basic info
+  name            String
+  brand           String?
+  barcode         String?  @unique
+  category        String   // protein, dairy, grains, etc.
+  
+  // Nutritional data per 100g
+  calories        Float
+  protein         Float
+  carbohydrates   Float
+  fat             Float
+  fiber           Float?
+  sugar           Float?
+  sodium          Float?
+  
+  // Serving info
+  servingSize     Float    @default(100) // in grams
+  servingUnit     String   @default("g")
+  
+  // Metadata
+  verified        Boolean  @default(false) // Verified by admin
+  imageUrl        String?
+  
+  // Relations
+  foodLogs        FoodLog[]
+  favorites       FavoriteFoodItem[]
+  mealPlanItems   MealPlanItem[]
+  
+  @@index([name])
+  @@index([barcode])
+  @@index([category])
+}
+
+// User's custom food entries
+model CustomFood {
+  id              String   @id @default(cuid())
+  userId          String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // Same structure as FoodItem but user-specific
+  name            String
+  brand           String?
+  category        String
+  
+  calories        Float
+  protein         Float
+  carbohydrates   Float
+  fat             Float
+  fiber           Float?
+  sugar           Float?
+  sodium          Float?
+  
+  servingSize     Float    @default(100)
+  servingUnit     String   @default("g")
+  imageUrl        String?
+  
+  // Relations
+  user            UserProfile @relation(fields: [userId], references: [userId])
+  foodLogs        FoodLog[]
+  
+  @@index([userId])
+}
+
+// Food consumption logs
+model FoodLog {
+  id              String   @id @default(cuid())
+  userId          String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // What was consumed
+  foodItemId      String?  // Reference to FoodItem
+  customFoodId    String?  // Reference to CustomFood
+  quantity        Float    // Amount consumed
+  unit            String   // g, oz, cups, etc.
+  
+  // When it was consumed
+  consumedAt      DateTime @default(now())
+  mealType        String   // breakfast, lunch, dinner, snack
+  
+  // Calculated nutrition (denormalized for performance)
+  calories        Float
+  protein         Float
+  carbohydrates   Float
+  fat             Float
+  
+  // Image recognition data
+  imageUrl        String?
+  recognitionConfidence Float? // 0-1 confidence score
+  userVerified    Boolean  @default(false)
+  
+  // Relations
+  user            UserProfile @relation(fields: [userId], references: [userId])
+  foodItem        FoodItem?   @relation(fields: [foodItemId], references: [id])
+  customFood      CustomFood? @relation(fields: [customFoodId], references: [id])
+  
+  @@index([userId, consumedAt])
+  @@index([userId, mealType])
+}
+
+// User's favorite foods for quick logging
+model FavoriteFoodItem {
+  id          String   @id @default(cuid())
+  userId      String
+  foodItemId  String
+  nickname    String?  // User's custom name
+  createdAt   DateTime @default(now())
+  
+  // Relations
+  user        UserProfile @relation(fields: [userId], references: [userId])
+  foodItem    FoodItem    @relation(fields: [foodItemId], references: [id])
+  
+  @@unique([userId, foodItemId])
+  @@index([userId])
+}
+
+// Meal planning
+model MealPlan {
+  id          String   @id @default(cuid())
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  name        String
+  startDate   DateTime
+  endDate     DateTime
+  isActive    Boolean  @default(true)
+  
+  // Goals for this plan
+  dailyProteinTarget Float?
+  dailyCalorieTarget Float?
+  
+  // Relations
+  user        UserProfile    @relation(fields: [userId], references: [userId])
+  items       MealPlanItem[]
+  
+  @@index([userId, isActive])
+  @@index([userId, startDate, endDate])
+}
+
+// Individual items in a meal plan
+model MealPlanItem {
+  id          String   @id @default(cuid())
+  mealPlanId  String
+  foodItemId  String
+  
+  dayOfWeek   Int      // 0-6 (Sunday-Saturday)
+  mealType    String   // breakfast, lunch, dinner, snack
+  quantity    Float
+  unit        String
+  
+  // Relations
+  mealPlan    MealPlan @relation(fields: [mealPlanId], references: [id], onDelete: Cascade)
+  foodItem    FoodItem @relation(fields: [foodItemId], references: [id])
+  
+  @@index([mealPlanId, dayOfWeek])
+}
+
+// Grocery integration
+model GroceryOrder {
+  id              String   @id @default(cuid())
+  userId          String
+  createdAt       DateTime @default(now())
+  
+  provider        String   // instacart, amazon_fresh, etc.
+  orderId         String?  // External order ID
+  status          String   // pending, placed, delivered, cancelled
+  
+  items           Json     // Array of items ordered
+  totalAmount     Float?
+  deliveryDate    DateTime?
+  
+  // Relations to meal plan if generated from one
+  mealPlanId      String?
+  
+  @@index([userId, status])
+}
+
+// ===== HIPAA COMPLIANCE MODELS =====
+
+// Audit logging for HIPAA compliance
+model AuditLog {
+  id          String   @id @default(cuid())
+  userId      String?  // Can be null for system events
+  timestamp   DateTime @default(now())
+  
+  action      String   // create, read, update, delete, export, login, logout
+  resource    String   // foodLog, userProfile, mealPlan, etc.
+  resourceId  String?
+  
+  ipAddress   String
+  userAgent   String?
+  outcome     String   // success, failure
+  details     Json?    // Additional context
+  
+  @@index([userId, timestamp])
+  @@index([resource, timestamp])
+  @@index([timestamp])
+}
+
+// User consent tracking
+model UserConsent {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  privacyPolicy   Boolean  @default(false)
+  termsOfService  Boolean  @default(false)
+  dataProcessing  Boolean  @default(false)
+  marketingEmails Boolean  @default(false)
+  
+  consentDate     DateTime
+  ipAddress       String
+  
+  @@index([userId])
+}
+
+// Data retention policies
+model DataRetention {
+  id              String   @id @default(cuid())
+  userId          String
+  scheduledAt     DateTime @default(now())
+  
+  dataType        String   // foodLogs, userProfile, all
+  retentionDate   DateTime // When to delete
+  reason          String   // user_request, policy, inactive_account
+  status          String   @default("pending") // pending, completed, failed
+  
+  @@index([status, retentionDate])
+  @@index([userId])
+}

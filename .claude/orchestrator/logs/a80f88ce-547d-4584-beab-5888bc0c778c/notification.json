@@ -1,0 +1,51 @@
+[
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "Notification",
+    "message": "Claude is waiting for your input"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Bash"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Bash"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Bash"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Bash"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "Notification",
+    "message": "Claude is waiting for your input"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "Notification",
+    "message": "Claude is waiting for your input"
+  }
+]

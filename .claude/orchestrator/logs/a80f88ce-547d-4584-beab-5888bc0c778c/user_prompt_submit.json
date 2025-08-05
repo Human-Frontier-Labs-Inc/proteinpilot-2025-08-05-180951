@@ -1,0 +1,114 @@
+[
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "how far did we get ? are we ready to mock webhook receipt? "
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "try again"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "do it with one of the repos that already exists too for this stuff - here are the urls - pick one - - - 025-08-05 12:56:20,376 - __main__ - INFO - Detected ideabrow-automation webhook, transforming...                                                                                                                      \u2502\u25cf Bash(tmux ls | grep chaos-monkey)\nFetching PROGRESS_TRACKER.md from https://raw.githubusercontent.com/test/chaos-monkey-ai/main/PROGRESS_TRACKER.md                                                                                                      \u2502  \u23bf  No (tell Claude what to do differently)\nFailed to fetch https://raw.githubusercontent.com/test/chaos-monkey-ai/main/PROGRESS_TRACKER.md: 404                                                                                                                   \u2502\n2025-08-05 12:56:20,437 - __main__ - INFO - Received webhook: chaos-monkey-ai                                                                                                                                          \u2502\u256d\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e\n2025-08-05 12:56:20,438 - __main__ - INFO - Creating tmux session for project: chaos-monkey-ai                                                                                                                         \u2502\u2502 > do it with one of the repos that already exists too for this stuff - here are the urls - pick one - - -                                                                                                        \u2502\n2025-08-05 12:56:20,441 - __main__ - INFO - Selecting template...                                                                                                                                                      \u2502\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n\ud83d\udd0d Starting template selection...                                                                                                                                                                                       \u2502  \u23f5\u23f5 auto-accept edits on (shift+tab to cycle)                                                                                      \u2717 Auto-update failed \u00b7 Try claude doctor or npm i -g @anthropic-ai/claude-code\n\ud83e\udd16 Using LLM (z-ai/glm-4.5) for intelligent selection...                                                                                                                                                                \u2502\n2025-08-05 12:56:20,438 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:56:20] \"POST /webhook HTTP/1.1\" 202 -                                                                                                        \u2502\n2025-08-05 12:56:22,254 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions \"HTTP/1.1 200 OK\"                                                                                            \u2502\n\u2705 LLM selected: full-stack/ai-chatbot                                                                                                                                                                                  \u2502\n   Reason: This is the only AI-focused template in the available options, though it doesn't match the required Python/FastAPI technology stack.                                                                        \u2502\n   Confidence: LOW                                                                                                                                                                                                     \u2502\n2025-08-05 12:57:11,159 - __main__ - INFO - Selected template: full-stack/ai-chatbot                                                                                                                                   \u2502\n2025-08-05 12:57:11,159 - __main__ - INFO - Saved session parameters to: /home/wv3/tmux-automation/state/chaos-monkey-ai_params.json                                                                                   \u2502\n2025-08-05 12:57:11,160 - __main__ - INFO - Executing: /home/wv3/tmux-automation/scripts/create_automated_session.sh chaos-monkey-ai /home/wv3/templates/full-stack/ai-chatbot /home/wv3/tmux-automation/state/chaos-mo\u2502\nnkey-ai_params.json                                                                                                                                                                                                    \u2502\nUsername for 'https://github.com':              https://github.com/Human-Frontier-Labs-Inc/reality-glitch-maximizer-2025-08-05-024644, https://github.com/Human-Frontier-Labs-Inc/doom-scroll-destroyer-2025-08-05-022258"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "befoire you proceed - ceck the pane in our view to the right of you with server logs - are we utilizing the ssh in the server ? why is it asking for our username? "
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "I dont want it to clone the local poject - try with one of the urls I sent you - lets see if that works"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "no itsnot - - - I think it worked"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "Ive closed the session - lets use the opther github url for the nest test - - - make sure all the process are killed from the previous run - - - next test - - - \u221ahttps://github.com/Human-Frontier-Labs-Inc/senior-safety-guardian-2025-08-05-014226"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "it worked perfectly - now test with this url https://github.com/Human-Frontier-Labs-Inc/silver-tech-concierge-2025-08-04-230748 - - - "
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "Okay great - the daily automation just went off - trying to figure out why four repos were creates - did my fried create four docs folde \u007frs pushed and that why it triggered? or was it on our end"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "yeah - there are some things I would like to tweak - I need you to think about the creation of the progress tracker (not the docs, those are crated elsewhere) we need to \u007f\u007fhe progress tracker to carry over the correct insutrcutions for what an AI dropped into a templatized repo should actually do . I think the current progress tracker creation prompt does not consider this and comes more from an angle of building a whole new app from scratch - since our prompt that selects the frameworks has instrcutions to favor nextjs and clerk - I dont think we actually need to include that in the progrss tracker - I think phase 1 should look more like ; thoroughly analyzing the template, the progress tracker and all dos, understand and reason about what can be used from the template - what has to be modified , have the agent prefere to work directly within the framework leaning on the frameworks prebuilt comonents (especially with clerk, no build custom sign in pages, clerk hadoles this with like 5 lines of code, abrsctracts wverything -) the current progress tracker and initial prompts to cluade prmopt it as if it was responsible for coding everything from scratch - when its the op[postiue - the templates are premade to think about security and all that - lean into the template boiler[plate code more - - - - also if the template has prisma - it should use prisma becuase it nice (supabase is noce becuase tis easy to migrate off of lol"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "0 the session creation script will come after - get the prompt that write the progress tracker in ideabrow-automation"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "look at the ideabrow-automation direcotry - its in your file system! "
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "great - now lets move the original processed dos folder back into the ideabwoser root and commit all changes in both repos"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "wait wait wati - - - do we have to adjust the prompt thats generated that kicks off the tmux orchestrator to start building the app "
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "cool - I also have one other thing I would like to do - can we modify the script so that the propmt is actually sent at the end of the workflow that initilizes the tmuzx orchestrator thing? like we programatical\u007f\u007f\u007f\u007f\u007f\u007flly add that step on to the end (sorry for weird language, keep it simple) this way we are defnitely sending the strating prompt after the orchestration capabilities have been initilized - 0 0 think about it - sending the 'tmux send keys \" command to the claude code terminal from the terminal that intilized the tmuz orchestrator -0what do you think?"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/.claude/orchestrator",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "think about this - we are running a process in that one tmux window that initilizes the tmuxz orchrestrator - - - there must be some function where you are sending commands - just add the prompt to dynamically populate in there after the initilization is ran -0 - - the last instrictions from tmux orchestrator initiilizitation are somethingliek thi  - Run \"claude --continue\" to continue this conversation                                                    \u2502\n- Or run \"claude\" to start a fresh session                                                                 \u2502\n                                                                                                           \u2502\nNext steps:                                                                                                \u2502\n1. Run: claude                                                                                             \u2502\n2. For new features: /spec-create feature-name \"description\"                                               \u2502\n3. For bug fixes: /bug-create bug-name \"description\"                                                       \u2502\n                                                                                                           \u2502\nFor help, see the README                                                                                   \u2502\nTo update later: npm install -g @pimzino/claude-code-spec-workflow                                         \u2502\nwv3@homelab:~/projects/proteinpilot-2025-08-05-151412$                                                     \u2502\n[proteinpi0:development*s "
+  }
+]

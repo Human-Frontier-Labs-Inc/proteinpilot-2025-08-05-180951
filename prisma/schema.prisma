@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 model UserApiLimit {
@@ -22,4 +22,117 @@ model UserSubscription {
   stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id")
   stripePriceId          String?   @map(name: "stripe_price_id")
   stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
+}
+
+// ===== PROTEINPILOT MODELS =====
+
+// Extended user profile for health data
+model UserProfile {
+  id                  String   @id @default(cuid())
+  userId              String   @unique // Clerk user ID
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  
+  // Health & fitness data
+  proteinGoalDaily    Float?   @default(150) // Daily protein goal in grams
+  calorieGoalDaily    Float?   // Daily calorie goal
+  weight              Float?   // Current weight
+  height              Float?   // Height
+  activityLevel       String?  @default("moderate") // sedentary, light, moderate, active, very_active
+  
+  // Dietary preferences (comma-separated)
+  dietaryRestrictions String? // vegetarian, vegan, gluten-free, etc.
+  allergies           String? // nuts, dairy, shellfish, etc.
+  
+  // Privacy settings
+  shareDataForResearch Boolean @default(false)
+  allowNotifications   Boolean @default(true)
+  
+  // Relations
+  foodLogs     FoodLog[]
+  favorites    FavoriteFoodItem[]
+}
+
+// Food items database
+model FoodItem {
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // Basic info
+  name            String
+  brand           String?
+  barcode         String?  @unique
+  category        String   // protein, dairy, grains, etc.
+  
+  // Nutritional data per 100g
+  calories        Float
+  protein         Float
+  carbohydrates   Float
+  fat             Float
+  fiber           Float?
+  sugar           Float?
+  sodium          Float?
+  
+  // Serving info
+  servingSize     Float    @default(100) // in grams
+  servingUnit     String   @default("g")
+  
+  // Metadata
+  verified        Boolean  @default(false) // Verified by admin
+  imageUrl        String?
+  
+  // Relations
+  foodLogs        FoodLog[]
+  favorites       FavoriteFoodItem[]
+  
+  @@index([name])
+  @@index([barcode])
+  @@index([category])
+}
+
+// Food consumption logs
+model FoodLog {
+  id              String   @id @default(cuid())
+  userId          String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // What was consumed
+  foodItemId      String   // Reference to FoodItem
+  quantity        Float    // Amount consumed
+  unit            String   // g, oz, cups, etc.
+  
+  // When it was consumed
+  consumedAt      DateTime @default(now())
+  mealType        String   // breakfast, lunch, dinner, snack
+  
+  // Calculated nutrition (denormalized for performance)
+  calories        Float
+  protein         Float
+  carbohydrates   Float
+  fat             Float
+  
+  // Relations
+  user            UserProfile @relation(fields: [userId], references: [userId])
+  foodItem        FoodItem    @relation(fields: [foodItemId], references: [id])
+  
+  @@index([userId, consumedAt])
+  @@index([userId, mealType])
+}
+
+// User's favorite foods for quick logging
+model FavoriteFoodItem {
+  id          String   @id @default(cuid())
+  userId      String
+  foodItemId  String
+  nickname    String?  // User's custom name
+  createdAt   DateTime @default(now())
+  
+  // Relations
+  user        UserProfile @relation(fields: [userId], references: [userId])
+  foodItem    FoodItem    @relation(fields: [foodItemId], references: [id])
+  
+  @@unique([userId, foodItemId])
+  @@index([userId])
 }
