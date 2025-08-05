@@ -60,7 +60,7 @@ model FoodItem {
   updatedAt       DateTime @updatedAt
   
   // Basic info
-  name            String
+  name            String   @unique
   brand           String?
   barcode         String?  @unique
   category        String   // protein, dairy, grains, etc.

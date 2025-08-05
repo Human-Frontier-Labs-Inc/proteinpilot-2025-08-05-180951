@@ -1,39 +1,44 @@
-import { Code, ImageIcon, MessageSquare, Music, VideoIcon } from "lucide-react";
+import { BookOpen, Camera, TrendingUp, UtensilsCrossed, Plus } from "lucide-react";
 
 export const tools = [
   {
-    label: "Conversation",
-    icon: MessageSquare,
-    href: "/conversation",
-    color: "text-violet-500",
-    bgColor: "bg-violet-500/10",
+    label: "Quick Add Food",
+    icon: Plus,
+    href: "/quick-add",
+    color: "text-blue-600",
+    bgColor: "bg-blue-600/10",
+    description: "Add food to your daily log"
   },
   {
-    label: "Image Generation",
-    icon: ImageIcon,
-    color: "text-pink-700",
-    bgColor: "bg-pink-700/10",
-    href: "/image",
-  },
-  {
-    label: "Video Generation",
-    icon: VideoIcon,
-    color: "text-orange-700",
-    bgColor: "bg-orange-700/10",
-    href: "/video",
-  },
-  {
-    label: "Music Generation",
-    icon: Music,
-    href: "/music",
-    color: "text-emerald-500",
-    bgColor: "bg-emerald-500/10",
-  },
-  {
-    label: "Code Generation",
-    icon: Code,
+    label: "Food Log",
+    icon: UtensilsCrossed,
     color: "text-green-600",
     bgColor: "bg-green-600/10",
-    href: "/code",
+    href: "/food-log",
+    description: "View your daily nutrition history"
+  },
+  {
+    label: "Scan Food",
+    icon: Camera,
+    href: "/scan",
+    color: "text-purple-600",
+    bgColor: "bg-purple-600/10",
+    description: "Take a photo to identify food"
+  },
+  {
+    label: "Meal Plans",
+    icon: BookOpen,
+    color: "text-orange-600",
+    bgColor: "bg-orange-600/10",
+    href: "/meal-plans",
+    description: "Plan your meals for the week"
+  },
+  {
+    label: "Progress & Insights",
+    icon: TrendingUp,
+    href: "/insights",
+    color: "text-emerald-500",
+    bgColor: "bg-emerald-500/10",
+    description: "Track your protein goals over time"
   },
 ];
