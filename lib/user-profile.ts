@@ -1,8 +1,8 @@
-import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prismadb";
+import { mockAuth } from "@/lib/mock-auth";
 
 export async function getOrCreateUserProfile() {
-  const { userId } = auth();
+  const { userId } = mockAuth();
   
   if (!userId) {
     throw new Error("Unauthorized");
@@ -38,7 +38,7 @@ export async function updateUserProfile(data: {
   dietaryRestrictions?: string;
   allergies?: string;
 }) {
-  const { userId } = auth();
+  const { userId } = mockAuth();
   
   if (!userId) {
     throw new Error("Unauthorized");
@@ -51,7 +51,7 @@ export async function updateUserProfile(data: {
 }
 
 export async function getUserDailyStats(date = new Date()) {
-  const { userId } = auth();
+  const { userId } = mockAuth();
   
   if (!userId) {
     throw new Error("Unauthorized");

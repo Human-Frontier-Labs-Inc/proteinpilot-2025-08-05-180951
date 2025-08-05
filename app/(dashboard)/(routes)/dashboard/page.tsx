@@ -5,9 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Target, Plus } from "lucide-react";
+import { ArrowRight, Target, Plus, TrendingUp, Calendar } from "lucide-react";
 import { useEffect, useState } from "react";
-import { format } from "date-fns";
+import { format, subDays, startOfDay } from "date-fns";
+import { SimpleChart, ProgressRing } from "@/components/ui/simple-chart";
 
 import { tools } from "./constants";
 
@@ -22,13 +23,21 @@ interface DailyStats {
   calorieGoal: number;
 }
 
+interface WeeklyData {
+  date: string;
+  value: number;
+  goal: number;
+}
+
 export default function DashboardPage() {
   const router = useRouter();
   const [dailyStats, setDailyStats] = useState<DailyStats | null>(null);
+  const [weeklyData, setWeeklyData] = useState<WeeklyData[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchDailyStats();
+    generateWeeklyData();
   }, []);
 
   const fetchDailyStats = async () => {
@@ -43,6 +52,35 @@ export default function DashboardPage() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const generateWeeklyData = () => {
+    // Generate mock weekly data for the past 7 days
+    const mockWeeklyData: WeeklyData[] = [];
+    const goal = 150; // Default protein goal
+    
+    for (let i = 6; i >= 0; i--) {
+      const date = subDays(new Date(), i);
+      const dayName = format(date, 'EEE');
+      
+      // Generate realistic protein intake data
+      let proteinValue;
+      if (i === 0) {
+        // Today - use current progress
+        proteinValue = dailyStats?.dailyTotals.protein || Math.random() * 180;
+      } else {
+        // Past days - simulate realistic protein intake
+        proteinValue = Math.floor(Math.random() * 80) + 100; // 100-180g range
+      }
+      
+      mockWeeklyData.push({
+        date: dayName,
+        value: proteinValue,
+        goal
+      });
+    }
+    
+    setWeeklyData(mockWeeklyData);
   };
 
   const proteinProgress = dailyStats 
@@ -128,6 +166,26 @@ export default function DashboardPage() {
                   </div>
                 </div>
               </div>
+            )}
+          </CardContent>
+        </Card>
+
+        {/* Weekly Progress */}
+        <Card className="mb-6">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <TrendingUp className="h-5 w-5 text-green-600" />
+              Weekly Progress
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {weeklyData.length > 0 && (
+              <SimpleChart
+                data={weeklyData}
+                height={200}
+                color="bg-blue-500"
+                goalColor="border-red-400"
+              />
             )}
           </CardContent>
         </Card>

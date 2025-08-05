@@ -1,11 +1,11 @@
-import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prismadb";
 import { getOrCreateUserProfile } from "@/lib/user-profile";
+import { mockAuth } from "@/lib/mock-auth";
 
 export async function POST(req: Request) {
   try {
-    const { userId } = auth();
+    const { userId } = mockAuth();
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
@@ -72,7 +72,7 @@ export async function POST(req: Request) {
 
 export async function GET(req: Request) {
   try {
-    const { userId } = auth();
+    const { userId } = mockAuth();
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
@@ -123,7 +123,7 @@ export async function GET(req: Request) {
 
 export async function DELETE(req: Request) {
   try {
-    const { userId } = auth();
+    const { userId } = mockAuth();
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
