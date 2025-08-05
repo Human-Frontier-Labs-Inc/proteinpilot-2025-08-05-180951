@@ -40,5 +40,12 @@
     "cwd": "/home/wv3/projects/proteinpilot-2025-08-05-180951",
     "hook_event_name": "UserPromptSubmit",
     "prompt": "no9 summary required - - please crate a little shim script real quick to commit the code we crated in the project thats open righ now - get i pushed up please"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/projects/proteinpilot-2025-08-05-180951",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "ue ssh always - update all the approaches to use ssh please"
   }
 ]
