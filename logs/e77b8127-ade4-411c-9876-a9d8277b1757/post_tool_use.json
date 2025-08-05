@@ -3095,5 +3095,283 @@
       "content": "import { auth } from \"@clerk/nextjs/server\";\nimport { NextResponse } from \"next/server\";\nimport { getUserDailyStats } from \"@/lib/user-profile\";\n\nexport async function GET(req: Request) {\n  try {\n    const { userId } = auth();\n    if (!userId) {\n      return new NextResponse(\"Unauthorized\", { status: 401 });\n    }\n\n    const { searchParams } = new URL(req.url);\n    const dateParam = searchParams.get(\"date\");\n    \n    const date = dateParam ? new Date(dateParam) : new Date();\n    const stats = await getUserDailyStats(date);\n\n    return NextResponse.json(stats);\n  } catch (error) {\n    console.error(\"[DAILY_STATS_GET]\", error);\n    \n    // If user profile doesn't exist, return default values\n    if (error instanceof Error && error.message.includes(\"User profile not found\")) {\n      return NextResponse.json({\n        userProfile: null,\n        dailyTotals: {\n          calories: 0,\n          protein: 0,\n          carbohydrates: 0,\n          fat: 0\n        },\n        foodLogs: [],\n        proteinGoal: 150,\n        calorieGoal: 2000\n      });\n    }\n    \n    return new NextResponse(\"Internal Error\", { status: 500 });\n  }\n}",
       "structuredPatch": []
     }
+  },
+  {
+    "session_id": "e77b8127-ade4-411c-9876-a9d8277b1757",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3-projects-proteinpilot-2025-08-05-180951/e77b8127-ade4-411c-9876-a9d8277b1757.jsonl",
+    "cwd": "/home/wv3/projects/proteinpilot-2025-08-05-180951",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git add -A && git commit -m \"Transform dashboard to show protein tracking\n\n- Updated dashboard constants with protein tracking features\n- Created protein progress dashboard with daily stats\n- Added food logging API endpoints (POST, GET, DELETE)\n- Created user profile utilities with daily stats calculation\n- Added basic food items seeding script\n- Installed date-fns for date formatting\n\nCore protein tracking workflow is now in place.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\"",
+      "description": "Commit protein tracking dashboard changes"
+    },
+    "tool_response": {
+      "stdout": "[main 9494877] Transform dashboard to show protein tracking\n 14 files changed, 1723 insertions(+), 47 deletions(-)\n create mode 100644 app/api/food/log/route.ts\n create mode 100644 app/api/user/daily-stats/route.ts\n create mode 100644 lib/seed-data.ts\n create mode 100644 lib/user-profile.ts\n delete mode 100644 prisma/dev.db-journal\n create mode 100644 scripts/seed.js",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false
+    }
+  },
+  {
+    "session_id": "e77b8127-ade4-411c-9876-a9d8277b1757",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3-projects-proteinpilot-2025-08-05-180951/e77b8127-ade4-411c-9876-a9d8277b1757.jsonl",
+    "cwd": "/home/wv3/projects/proteinpilot-2025-08-05-180951",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "TodoWrite",
+    "tool_input": {
+      "todos": [
+        {
+          "content": "Implement database schema extensions for ProteinPilot",
+          "status": "completed",
+          "priority": "high",
+          "id": "1"
+        },
+        {
+          "content": "Create UserProfile after Clerk authentication",
+          "status": "completed",
+          "priority": "high",
+          "id": "2"
+        },
+        {
+          "content": "Build manual food entry API endpoint",
+          "status": "completed",
+          "priority": "high",
+          "id": "3"
+        },
+        {
+          "content": "Transform dashboard to show protein tracking",
+          "status": "completed",
+          "priority": "high",
+          "id": "4"
+        },
+        {
+          "content": "Implement daily protein progress visualization",
+          "status": "completed",
+          "priority": "high",
+          "id": "6"
+        },
+        {
+          "content": "Add basic food items seed data",
+          "status": "completed",
+          "priority": "medium",
+          "id": "7"
+        },
+        {
+          "content": "Create food log page replacing conversation",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "5"
+        },
+        {
+          "content": "Test core workflow end-to-end",
+          "status": "pending",
+          "priority": "high",
+          "id": "8"
+        },
+        {
+          "content": "Create quick-add food entry page",
+          "status": "pending",
+          "priority": "high",
+          "id": "9"
+        }
+      ]
+    },
+    "tool_response": {
+      "oldTodos": [
+        {
+          "content": "Implement database schema extensions for ProteinPilot",
+          "status": "completed",
+          "priority": "high",
+          "id": "1"
+        },
+        {
+          "content": "Create UserProfile after Clerk authentication",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "2"
+        },
+        {
+          "content": "Build manual food entry API endpoint",
+          "status": "pending",
+          "priority": "high",
+          "id": "3"
+        },
+        {
+          "content": "Transform dashboard to show protein tracking",
+          "status": "pending",
+          "priority": "high",
+          "id": "4"
+        },
+        {
+          "content": "Create food log page replacing conversation",
+          "status": "pending",
+          "priority": "high",
+          "id": "5"
+        },
+        {
+          "content": "Implement daily protein progress visualization",
+          "status": "pending",
+          "priority": "high",
+          "id": "6"
+        },
+        {
+          "content": "Add basic food items seed data",
+          "status": "pending",
+          "priority": "medium",
+          "id": "7"
+        },
+        {
+          "content": "Test core workflow end-to-end",
+          "status": "pending",
+          "priority": "high",
+          "id": "8"
+        }
+      ],
+      "newTodos": [
+        {
+          "content": "Implement database schema extensions for ProteinPilot",
+          "status": "completed",
+          "priority": "high",
+          "id": "1"
+        },
+        {
+          "content": "Create UserProfile after Clerk authentication",
+          "status": "completed",
+          "priority": "high",
+          "id": "2"
+        },
+        {
+          "content": "Build manual food entry API endpoint",
+          "status": "completed",
+          "priority": "high",
+          "id": "3"
+        },
+        {
+          "content": "Transform dashboard to show protein tracking",
+          "status": "completed",
+          "priority": "high",
+          "id": "4"
+        },
+        {
+          "content": "Implement daily protein progress visualization",
+          "status": "completed",
+          "priority": "high",
+          "id": "6"
+        },
+        {
+          "content": "Add basic food items seed data",
+          "status": "completed",
+          "priority": "medium",
+          "id": "7"
+        },
+        {
+          "content": "Create food log page replacing conversation",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "5"
+        },
+        {
+          "content": "Test core workflow end-to-end",
+          "status": "pending",
+          "priority": "high",
+          "id": "8"
+        },
+        {
+          "content": "Create quick-add food entry page",
+          "status": "pending",
+          "priority": "high",
+          "id": "9"
+        }
+      ]
+    }
+  },
+  {
+    "session_id": "e77b8127-ade4-411c-9876-a9d8277b1757",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3-projects-proteinpilot-2025-08-05-180951/e77b8127-ade4-411c-9876-a9d8277b1757.jsonl",
+    "cwd": "/home/wv3/projects/proteinpilot-2025-08-05-180951",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Read",
+    "tool_input": {
+      "file_path": "/home/wv3/projects/proteinpilot-2025-08-05-180951/app/(dashboard)/(routes)/conversation/page.tsx"
+    },
+    "tool_response": {
+      "type": "text",
+      "file": {
+        "filePath": "/home/wv3/projects/proteinpilot-2025-08-05-180951/app/(dashboard)/(routes)/conversation/page.tsx",
+        "content": "\"use client\";\n\nimport axios from \"axios\";\nimport * as z from \"zod\";\nimport { useState } from \"react\";\nimport { useRouter } from \"next/navigation\";\nimport { MessageSquare } from \"lucide-react\";\nimport { toast } from 'sonner'\nimport { useForm } from \"react-hook-form\";\n\nimport { zodResolver } from \"@hookform/resolvers/zod\";\nimport { Form, FormControl, FormField, FormItem } from \"@/components/ui/form\";\nimport Heading from \"@/components/heading\";\nimport { Input } from \"@/components/ui/input\";\nimport { Button } from \"@/components/ui/button\";\nimport OpenAI from \"openai\";\n\nimport { formSchema } from \"./constants\";\nimport { Empty } from \"@/components/empty\";\nimport { Loader } from \"@/components/loader\";\nimport { cn } from \"@/lib/utils\";\nimport { UserAvatar } from \"@/components/user-avatar\";\nimport { BotAvatar } from \"@/components/bot-avatar\";\nimport { useProModal } from \"@/hooks/use-pro-modal\";\n\nexport default function ConversationPage() {\n  const router = useRouter();\n  const proModal = useProModal();\n  const [messages, setMessages] = useState<\n    OpenAI.ChatCompletionUserMessageParam[]\n  >([]);\n\n  const form = useForm<z.infer<typeof formSchema>>({\n    resolver: zodResolver(formSchema),\n    defaultValues: {\n      prompt: \"\",\n    },\n  });\n\n  const isLoading = form.formState.isSubmitting;\n\n  const onSubmit = async (values: z.infer<typeof formSchema>) => {\n    try {\n      const userMessage: OpenAI.ChatCompletionUserMessageParam = {\n        role: \"user\",\n        content: values.prompt,\n      };\n      const newMessages = [...messages, userMessage];\n\n      const response = await axios.post(\"/api/conversation\", {\n        messages: newMessages,\n      });\n      setMessages((current) => [...current, userMessage, response.data]);\n\n      form.reset();\n    } catch (error: any) {\n      if (error?.response?.status === 403) {\n        proModal.onOpen();\n      } else {\n        toast.error(\"Something went wrong.\");\n      }\n    } finally {\n      router.refresh();\n    }\n  };\n\n  return (\n    <div>\n      <Heading\n        title=\"Conversation\"\n        description=\"Our most advanced conversation model.\"\n        icon={MessageSquare}\n        iconColor=\"text-violet-500\"\n        bgColor=\"bg-violet-500/10\"\n      />\n\n      <div className=\"px-4 lg:px-8\">\n        <div>\n          <Form {...form}>\n            <form\n              onSubmit={form.handleSubmit(onSubmit)}\n              className=\"\n                rounded-lg \n                border \n                w-full \n                p-4 \n                px-3 \n                md:px-6 \n                focus-within:shadow-sm\n                grid\n                grid-cols-12\n                gap-2\n              \"\n            >\n              <FormField\n                name=\"prompt\"\n                render={({ field }) => (\n                  <FormItem className=\"col-span-12 lg:col-span-10\">\n                    <FormControl className=\"m-0 p-0\">\n                      <Input\n                        className=\"border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent\"\n                        disabled={isLoading}\n                        placeholder=\"how do I calculate the speed of light?\"\n                        {...field}\n                      />\n                    </FormControl>\n                  </FormItem>\n                )}\n              />\n              <Button\n                className=\"col-span-12 lg:col-span-2 w-full\"\n                type=\"submit\"\n                disabled={isLoading}\n                size=\"icon\"\n              >\n                Generate\n              </Button>\n            </form>\n          </Form>\n        </div>\n\n        <div className=\"space-y-4 mt-4\">\n          {isLoading && (\n            <div className=\"p-8 rounded-lg w-full flex items-center justify-center bg-muted\">\n              <Loader />\n            </div>\n          )}\n          {messages.length === 0 && !isLoading && (\n            <Empty label=\"No conversation started.\" />\n          )}\n          <div className=\"flex flex-col-reverse gap-y-4\">\n            {messages.map((message) => (\n              <div\n                key={message.content as string}\n                className={cn(\n                  \"p-8 w-full flex items-start gap-x-8 rounded-lg\",\n                  message.role === \"user\"\n                    ? \"bg-white border border-black/10\"\n                    : \"bg-muted\"\n                )}\n              >\n                {message.role === \"user\" ? <UserAvatar /> : <BotAvatar />}\n\n                <p className=\"text-sm\">{message.content as string}</p>\n              </div>\n            ))}\n          </div>\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+        "numLines": 153,
+        "startLine": 1,
+        "totalLines": 153
+      }
+    }
+  },
+  {
+    "session_id": "e77b8127-ade4-411c-9876-a9d8277b1757",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3-projects-proteinpilot-2025-08-05-180951/e77b8127-ade4-411c-9876-a9d8277b1757.jsonl",
+    "cwd": "/home/wv3/projects/proteinpilot-2025-08-05-180951",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": "/home/wv3/projects/proteinpilot-2025-08-05-180951/app/(dashboard)/(routes)/food-log/page.tsx",
+      "content": "\"use client\";\n\nimport * as z from \"zod\";\nimport { useState, useEffect } from \"react\";\nimport { useRouter } from \"next/navigation\";\nimport { UtensilsCrossed, Plus, Trash2, Edit } from \"lucide-react\";\nimport { toast } from 'sonner'\nimport { useForm } from \"react-hook-form\";\nimport { format } from \"date-fns\";\n\nimport { zodResolver } from \"@hookform/resolvers/zod\";\nimport { Form, FormControl, FormField, FormItem, FormLabel } from \"@/components/ui/form\";\nimport Heading from \"@/components/heading\";\nimport { Input } from \"@/components/ui/input\";\nimport { Button } from \"@/components/ui/button\";\nimport { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\";\nimport { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from \"@/components/ui/select\";\n\nimport { Empty } from \"@/components/empty\";\nimport { Loader } from \"@/components/loader\";\nimport { useProModal } from \"@/hooks/use-pro-modal\";\n\nconst formSchema = z.object({\n  foodName: z.string().min(1, \"Food name is required\"),\n  quantity: z.number().min(0.1, \"Quantity must be greater than 0\"),\n  mealType: z.string().min(1, \"Meal type is required\"),\n});\n\ninterface FoodItem {\n  id: string;\n  name: string;\n  brand?: string;\n  category: string;\n  calories: number;\n  protein: number;\n  carbohydrates: number;\n  fat: number;\n  servingSize: number;\n  servingUnit: string;\n}\n\ninterface FoodLog {\n  id: string;\n  quantity: number;\n  unit: string;\n  mealType: string;\n  consumedAt: string;\n  calories: number;\n  protein: number;\n  carbohydrates: number;\n  fat: number;\n  foodItem: FoodItem;\n}\n\nexport default function FoodLogPage() {\n  const router = useRouter();\n  const proModal = useProModal();\n  const [foodLogs, setFoodLogs] = useState<FoodLog[]>([]);\n  const [foodItems, setFoodItems] = useState<FoodItem[]>([]);\n  const [selectedFood, setSelectedFood] = useState<FoodItem | null>(null);\n  const [loading, setLoading] = useState(true);\n\n  const form = useForm<z.infer<typeof formSchema>>({\n    resolver: zodResolver(formSchema),\n    defaultValues: {\n      foodName: \"\",\n      quantity: 100,\n      mealType: \"\",\n    },\n  });\n\n  const isLoading = form.formState.isSubmitting;\n\n  useEffect(() => {\n    fetchFoodLogs();\n    fetchFoodItems();\n  }, []);\n\n  const fetchFoodLogs = async () => {\n    try {\n      const response = await fetch('/api/food/log');\n      if (response.ok) {\n        const data = await response.json();\n        setFoodLogs(data);\n      }\n    } catch (error) {\n      console.error('Error fetching food logs:', error);\n      toast.error(\"Failed to load food logs\");\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  const fetchFoodItems = async () => {\n    try {\n      const response = await fetch('/api/food/items');\n      if (response.ok) {\n        const data = await response.json();\n        setFoodItems(data);\n      }\n    } catch (error) {\n      console.error('Error fetching food items:', error);\n    }\n  };\n\n  const onSubmit = async (values: z.infer<typeof formSchema>) => {\n    if (!selectedFood) {\n      toast.error(\"Please select a food item\");\n      return;\n    }\n\n    try {\n      const response = await fetch('/api/food/log', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify({\n          foodItemId: selectedFood.id,\n          quantity: values.quantity,\n          mealType: values.mealType,\n        }),\n      });\n\n      if (response.ok) {\n        const newLog = await response.json();\n        setFoodLogs(prev => [newLog, ...prev]);\n        form.reset();\n        setSelectedFood(null);\n        toast.success(\"Food logged successfully!\");\n      } else {\n        toast.error(\"Failed to log food\");\n      }\n    } catch (error: any) {\n      if (error?.response?.status === 403) {\n        proModal.onOpen();\n      } else {\n        toast.error(\"Something went wrong.\");\n      }\n    } finally {\n      router.refresh();\n    }\n  };\n\n  const deleteLog = async (logId: string) => {\n    try {\n      const response = await fetch(`/api/food/log?id=${logId}`, {\n        method: 'DELETE',\n      });\n\n      if (response.ok) {\n        setFoodLogs(prev => prev.filter(log => log.id !== logId));\n        toast.success(\"Food log deleted\");\n      } else {\n        toast.error(\"Failed to delete food log\");\n      }\n    } catch (error) {\n      toast.error(\"Failed to delete food log\");\n    }\n  };\n\n  const mealTypes = [\n    { value: \"breakfast\", label: \"Breakfast\" },\n    { value: \"lunch\", label: \"Lunch\" },\n    { value: \"dinner\", label: \"Dinner\" },\n    { value: \"snack\", label: \"Snack\" },\n  ];\n\n  return (\n    <div>\n      <Heading\n        title=\"Food Log\"\n        description=\"Track your daily food intake and protein consumption.\"\n        icon={UtensilsCrossed}\n        iconColor=\"text-green-600\"\n        bgColor=\"bg-green-600/10\"\n      />\n\n      <div className=\"px-4 lg:px-8\">\n        {/* Add Food Form */}\n        <Card className=\"mb-6\">\n          <CardHeader>\n            <CardTitle className=\"flex items-center gap-2\">\n              <Plus className=\"h-5 w-5\" />\n              Add Food Entry\n            </CardTitle>\n          </CardHeader>\n          <CardContent>\n            <Form {...form}>\n              <form\n                onSubmit={form.handleSubmit(onSubmit)}\n                className=\"space-y-4\"\n              >\n                <div className=\"grid grid-cols-1 md:grid-cols-2 gap-4\">\n                  <FormField\n                    name=\"foodName\"\n                    render={({ field }) => (\n                      <FormItem>\n                        <FormLabel>Food Item</FormLabel>\n                        <FormControl>\n                          <Select\n                            value={selectedFood?.id || \"\"}\n                            onValueChange={(value) => {\n                              const food = foodItems.find(f => f.id === value);\n                              setSelectedFood(food || null);\n                              field.onChange(food?.name || \"\");\n                            }}\n                          >\n                            <SelectTrigger>\n                              <SelectValue placeholder=\"Select a food item\" />\n                            </SelectTrigger>\n                            <SelectContent>\n                              {foodItems.map((food) => (\n                                <SelectItem key={food.id} value={food.id}>\n                                  {food.name} ({food.protein}g protein)\n                                </SelectItem>\n                              ))}\n                            </SelectContent>\n                          </Select>\n                        </FormControl>\n                      </FormItem>\n                    )}\n                  />\n\n                  <FormField\n                    name=\"quantity\"\n                    render={({ field }) => (\n                      <FormItem>\n                        <FormLabel>Quantity (g)</FormLabel>\n                        <FormControl>\n                          <Input\n                            type=\"number\"\n                            step=\"0.1\"\n                            min=\"0.1\"\n                            disabled={isLoading}\n                            placeholder=\"100\"\n                            {...field}\n                            onChange={(e) => field.onChange(parseFloat(e.target.value))}\n                          />\n                        </FormControl>\n                      </FormItem>\n                    )}\n                  />\n\n                  <FormField\n                    name=\"mealType\"\n                    render={({ field }) => (\n                      <FormItem>\n                        <FormLabel>Meal Type</FormLabel>\n                        <FormControl>\n                          <Select onValueChange={field.onChange} value={field.value}>\n                            <SelectTrigger>\n                              <SelectValue placeholder=\"Select meal type\" />\n                            </SelectTrigger>\n                            <SelectContent>\n                              {mealTypes.map((meal) => (\n                                <SelectItem key={meal.value} value={meal.value}>\n                                  {meal.label}\n                                </SelectItem>\n                              ))}\n                            </SelectContent>\n                          </Select>\n                        </FormControl>\n                      </FormItem>\n                    )}\n                  />\n\n                  <div className=\"flex items-end\">\n                    <Button\n                      type=\"submit\"\n                      disabled={isLoading || !selectedFood}\n                      className=\"w-full\"\n                    >\n                      {isLoading ? \"Adding...\" : \"Add to Log\"}\n                    </Button>\n                  </div>\n                </div>\n\n                {selectedFood && (\n                  <div className=\"mt-4 p-4 bg-muted rounded-lg\">\n                    <h4 className=\"font-semibold mb-2\">Nutrition Info (per {form.watch(\"quantity\")}g)</h4>\n                    <div className=\"grid grid-cols-4 gap-4 text-sm\">\n                      <div>\n                        <span className=\"font-medium\">Calories:</span>\n                        <p>{((selectedFood.calories * form.watch(\"quantity\")) / selectedFood.servingSize).toFixed(0)}</p>\n                      </div>\n                      <div>\n                        <span className=\"font-medium\">Protein:</span>\n                        <p>{((selectedFood.protein * form.watch(\"quantity\")) / selectedFood.servingSize).toFixed(1)}g</p>\n                      </div>\n                      <div>\n                        <span className=\"font-medium\">Carbs:</span>\n                        <p>{((selectedFood.carbohydrates * form.watch(\"quantity\")) / selectedFood.servingSize).toFixed(1)}g</p>\n                      </div>\n                      <div>\n                        <span className=\"font-medium\">Fat:</span>\n                        <p>{((selectedFood.fat * form.watch(\"quantity\")) / selectedFood.servingSize).toFixed(1)}g</p>\n                      </div>\n                    </div>\n                  </div>\n                )}\n              </form>\n            </Form>\n          </CardContent>\n        </Card>\n\n        {/* Food Logs */}\n        <div className=\"space-y-4\">\n          <h3 className=\"text-lg font-semibold\">Today's Food Log</h3>\n          {loading && (\n            <div className=\"p-8 rounded-lg w-full flex items-center justify-center bg-muted\">\n              <Loader />\n            </div>\n          )}\n          {foodLogs.length === 0 && !loading && (\n            <Empty label=\"No food entries yet. Start tracking your protein!\" />\n          )}\n          \n          {foodLogs.map((log) => (\n            <Card key={log.id}>\n              <CardContent className=\"p-4\">\n                <div className=\"flex justify-between items-start\">\n                  <div className=\"flex-1\">\n                    <div className=\"flex items-center gap-2 mb-2\">\n                      <h4 className=\"font-semibold\">{log.foodItem.name}</h4>\n                      <span className=\"text-sm text-muted-foreground\">\n                        ({log.mealType})\n                      </span>\n                    </div>\n                    <p className=\"text-sm text-muted-foreground mb-2\">\n                      {log.quantity}g \u2022 {format(new Date(log.consumedAt), 'h:mm a')}\n                    </p>\n                    <div className=\"grid grid-cols-4 gap-4 text-sm\">\n                      <div>\n                        <span className=\"font-medium\">Calories:</span>\n                        <p>{log.calories.toFixed(0)}</p>\n                      </div>\n                      <div>\n                        <span className=\"font-medium\">Protein:</span>\n                        <p className=\"text-blue-600 font-semibold\">{log.protein.toFixed(1)}g</p>\n                      </div>\n                      <div>\n                        <span className=\"font-medium\">Carbs:</span>\n                        <p>{log.carbohydrates.toFixed(1)}g</p>\n                      </div>\n                      <div>\n                        <span className=\"font-medium\">Fat:</span>\n                        <p>{log.fat.toFixed(1)}g</p>\n                      </div>\n                    </div>\n                  </div>\n                  <Button\n                    variant=\"ghost\"\n                    size=\"sm\"\n                    onClick={() => deleteLog(log.id)}\n                    className=\"text-red-600 hover:text-red-700\"\n                  >\n                    <Trash2 className=\"h-4 w-4\" />\n                  </Button>\n                </div>\n              </CardContent>\n            </Card>\n          ))}\n        </div>\n      </div>\n    </div>\n  );\n}"
+    },
+    "tool_response": {
+      "type": "create",
+      "filePath": "/home/wv3/projects/proteinpilot-2025-08-05-180951/app/(dashboard)/(routes)/food-log/page.tsx",
+      "content": "\"use client\";\n\nimport * as z from \"zod\";\nimport { useState, useEffect } from \"react\";\nimport { useRouter } from \"next/navigation\";\nimport { UtensilsCrossed, Plus, Trash2, Edit } from \"lucide-react\";\nimport { toast } from 'sonner'\nimport { useForm } from \"react-hook-form\";\nimport { format } from \"date-fns\";\n\nimport { zodResolver } from \"@hookform/resolvers/zod\";\nimport { Form, FormControl, FormField, FormItem, FormLabel } from \"@/components/ui/form\";\nimport Heading from \"@/components/heading\";\nimport { Input } from \"@/components/ui/input\";\nimport { Button } from \"@/components/ui/button\";\nimport { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\";\nimport { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from \"@/components/ui/select\";\n\nimport { Empty } from \"@/components/empty\";\nimport { Loader } from \"@/components/loader\";\nimport { useProModal } from \"@/hooks/use-pro-modal\";\n\nconst formSchema = z.object({\n  foodName: z.string().min(1, \"Food name is required\"),\n  quantity: z.number().min(0.1, \"Quantity must be greater than 0\"),\n  mealType: z.string().min(1, \"Meal type is required\"),\n});\n\ninterface FoodItem {\n  id: string;\n  name: string;\n  brand?: string;\n  category: string;\n  calories: number;\n  protein: number;\n  carbohydrates: number;\n  fat: number;\n  servingSize: number;\n  servingUnit: string;\n}\n\ninterface FoodLog {\n  id: string;\n  quantity: number;\n  unit: string;\n  mealType: string;\n  consumedAt: string;\n  calories: number;\n  protein: number;\n  carbohydrates: number;\n  fat: number;\n  foodItem: FoodItem;\n}\n\nexport default function FoodLogPage() {\n  const router = useRouter();\n  const proModal = useProModal();\n  const [foodLogs, setFoodLogs] = useState<FoodLog[]>([]);\n  const [foodItems, setFoodItems] = useState<FoodItem[]>([]);\n  const [selectedFood, setSelectedFood] = useState<FoodItem | null>(null);\n  const [loading, setLoading] = useState(true);\n\n  const form = useForm<z.infer<typeof formSchema>>({\n    resolver: zodResolver(formSchema),\n    defaultValues: {\n      foodName: \"\",\n      quantity: 100,\n      mealType: \"\",\n    },\n  });\n\n  const isLoading = form.formState.isSubmitting;\n\n  useEffect(() => {\n    fetchFoodLogs();\n    fetchFoodItems();\n  }, []);\n\n  const fetchFoodLogs = async () => {\n    try {\n      const response = await fetch('/api/food/log');\n      if (response.ok) {\n        const data = await response.json();\n        setFoodLogs(data);\n      }\n    } catch (error) {\n      console.error('Error fetching food logs:', error);\n      toast.error(\"Failed to load food logs\");\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  const fetchFoodItems = async () => {\n    try {\n      const response = await fetch('/api/food/items');\n      if (response.ok) {\n        const data = await response.json();\n        setFoodItems(data);\n      }\n    } catch (error) {\n      console.error('Error fetching food items:', error);\n    }\n  };\n\n  const onSubmit = async (values: z.infer<typeof formSchema>) => {\n    if (!selectedFood) {\n      toast.error(\"Please select a food item\");\n      return;\n    }\n\n    try {\n      const response = await fetch('/api/food/log', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify({\n          foodItemId: selectedFood.id,\n          quantity: values.quantity,\n          mealType: values.mealType,\n        }),\n      });\n\n      if (response.ok) {\n        const newLog = await response.json();\n        setFoodLogs(prev => [newLog, ...prev]);\n        form.reset();\n        setSelectedFood(null);\n        toast.success(\"Food logged successfully!\");\n      } else {\n        toast.error(\"Failed to log food\");\n      }\n    } catch (error: any) {\n      if (error?.response?.status === 403) {\n        proModal.onOpen();\n      } else {\n        toast.error(\"Something went wrong.\");\n      }\n    } finally {\n      router.refresh();\n    }\n  };\n\n  const deleteLog = async (logId: string) => {\n    try {\n      const response = await fetch(`/api/food/log?id=${logId}`, {\n        method: 'DELETE',\n      });\n\n      if (response.ok) {\n        setFoodLogs(prev => prev.filter(log => log.id !== logId));\n        toast.success(\"Food log deleted\");\n      } else {\n        toast.error(\"Failed to delete food log\");\n      }\n    } catch (error) {\n      toast.error(\"Failed to delete food log\");\n    }\n  };\n\n  const mealTypes = [\n    { value: \"breakfast\", label: \"Breakfast\" },\n    { value: \"lunch\", label: \"Lunch\" },\n    { value: \"dinner\", label: \"Dinner\" },\n    { value: \"snack\", label: \"Snack\" },\n  ];\n\n  return (\n    <div>\n      <Heading\n        title=\"Food Log\"\n        description=\"Track your daily food intake and protein consumption.\"\n        icon={UtensilsCrossed}\n        iconColor=\"text-green-600\"\n        bgColor=\"bg-green-600/10\"\n      />\n\n      <div className=\"px-4 lg:px-8\">\n        {/* Add Food Form */}\n        <Card className=\"mb-6\">\n          <CardHeader>\n            <CardTitle className=\"flex items-center gap-2\">\n              <Plus className=\"h-5 w-5\" />\n              Add Food Entry\n            </CardTitle>\n          </CardHeader>\n          <CardContent>\n            <Form {...form}>\n              <form\n                onSubmit={form.handleSubmit(onSubmit)}\n                className=\"space-y-4\"\n              >\n                <div className=\"grid grid-cols-1 md:grid-cols-2 gap-4\">\n                  <FormField\n                    name=\"foodName\"\n                    render={({ field }) => (\n                      <FormItem>\n                        <FormLabel>Food Item</FormLabel>\n                        <FormControl>\n                          <Select\n                            value={selectedFood?.id || \"\"}\n                            onValueChange={(value) => {\n                              const food = foodItems.find(f => f.id === value);\n                              setSelectedFood(food || null);\n                              field.onChange(food?.name || \"\");\n                            }}\n                          >\n                            <SelectTrigger>\n                              <SelectValue placeholder=\"Select a food item\" />\n                            </SelectTrigger>\n                            <SelectContent>\n                              {foodItems.map((food) => (\n                                <SelectItem key={food.id} value={food.id}>\n                                  {food.name} ({food.protein}g protein)\n                                </SelectItem>\n                              ))}\n                            </SelectContent>\n                          </Select>\n                        </FormControl>\n                      </FormItem>\n                    )}\n                  />\n\n                  <FormField\n                    name=\"quantity\"\n                    render={({ field }) => (\n                      <FormItem>\n                        <FormLabel>Quantity (g)</FormLabel>\n                        <FormControl>\n                          <Input\n                            type=\"number\"\n                            step=\"0.1\"\n                            min=\"0.1\"\n                            disabled={isLoading}\n                            placeholder=\"100\"\n                            {...field}\n                            onChange={(e) => field.onChange(parseFloat(e.target.value))}\n                          />\n                        </FormControl>\n                      </FormItem>\n                    )}\n                  />\n\n                  <FormField\n                    name=\"mealType\"\n                    render={({ field }) => (\n                      <FormItem>\n                        <FormLabel>Meal Type</FormLabel>\n                        <FormControl>\n                          <Select onValueChange={field.onChange} value={field.value}>\n                            <SelectTrigger>\n                              <SelectValue placeholder=\"Select meal type\" />\n                            </SelectTrigger>\n                            <SelectContent>\n                              {mealTypes.map((meal) => (\n                                <SelectItem key={meal.value} value={meal.value}>\n                                  {meal.label}\n                                </SelectItem>\n                              ))}\n                            </SelectContent>\n                          </Select>\n                        </FormControl>\n                      </FormItem>\n                    )}\n                  />\n\n                  <div className=\"flex items-end\">\n                    <Button\n                      type=\"submit\"\n                      disabled={isLoading || !selectedFood}\n                      className=\"w-full\"\n                    >\n                      {isLoading ? \"Adding...\" : \"Add to Log\"}\n                    </Button>\n                  </div>\n                </div>\n\n                {selectedFood && (\n                  <div className=\"mt-4 p-4 bg-muted rounded-lg\">\n                    <h4 className=\"font-semibold mb-2\">Nutrition Info (per {form.watch(\"quantity\")}g)</h4>\n                    <div className=\"grid grid-cols-4 gap-4 text-sm\">\n                      <div>\n                        <span className=\"font-medium\">Calories:</span>\n                        <p>{((selectedFood.calories * form.watch(\"quantity\")) / selectedFood.servingSize).toFixed(0)}</p>\n                      </div>\n                      <div>\n                        <span className=\"font-medium\">Protein:</span>\n                        <p>{((selectedFood.protein * form.watch(\"quantity\")) / selectedFood.servingSize).toFixed(1)}g</p>\n                      </div>\n                      <div>\n                        <span className=\"font-medium\">Carbs:</span>\n                        <p>{((selectedFood.carbohydrates * form.watch(\"quantity\")) / selectedFood.servingSize).toFixed(1)}g</p>\n                      </div>\n                      <div>\n                        <span className=\"font-medium\">Fat:</span>\n                        <p>{((selectedFood.fat * form.watch(\"quantity\")) / selectedFood.servingSize).toFixed(1)}g</p>\n                      </div>\n                    </div>\n                  </div>\n                )}\n              </form>\n            </Form>\n          </CardContent>\n        </Card>\n\n        {/* Food Logs */}\n        <div className=\"space-y-4\">\n          <h3 className=\"text-lg font-semibold\">Today's Food Log</h3>\n          {loading && (\n            <div className=\"p-8 rounded-lg w-full flex items-center justify-center bg-muted\">\n              <Loader />\n            </div>\n          )}\n          {foodLogs.length === 0 && !loading && (\n            <Empty label=\"No food entries yet. Start tracking your protein!\" />\n          )}\n          \n          {foodLogs.map((log) => (\n            <Card key={log.id}>\n              <CardContent className=\"p-4\">\n                <div className=\"flex justify-between items-start\">\n                  <div className=\"flex-1\">\n                    <div className=\"flex items-center gap-2 mb-2\">\n                      <h4 className=\"font-semibold\">{log.foodItem.name}</h4>\n                      <span className=\"text-sm text-muted-foreground\">\n                        ({log.mealType})\n                      </span>\n                    </div>\n                    <p className=\"text-sm text-muted-foreground mb-2\">\n                      {log.quantity}g \u2022 {format(new Date(log.consumedAt), 'h:mm a')}\n                    </p>\n                    <div className=\"grid grid-cols-4 gap-4 text-sm\">\n                      <div>\n                        <span className=\"font-medium\">Calories:</span>\n                        <p>{log.calories.toFixed(0)}</p>\n                      </div>\n                      <div>\n                        <span className=\"font-medium\">Protein:</span>\n                        <p className=\"text-blue-600 font-semibold\">{log.protein.toFixed(1)}g</p>\n                      </div>\n                      <div>\n                        <span className=\"font-medium\">Carbs:</span>\n                        <p>{log.carbohydrates.toFixed(1)}g</p>\n                      </div>\n                      <div>\n                        <span className=\"font-medium\">Fat:</span>\n                        <p>{log.fat.toFixed(1)}g</p>\n                      </div>\n                    </div>\n                  </div>\n                  <Button\n                    variant=\"ghost\"\n                    size=\"sm\"\n                    onClick={() => deleteLog(log.id)}\n                    className=\"text-red-600 hover:text-red-700\"\n                  >\n                    <Trash2 className=\"h-4 w-4\" />\n                  </Button>\n                </div>\n              </CardContent>\n            </Card>\n          ))}\n        </div>\n      </div>\n    </div>\n  );\n}",
+      "structuredPatch": []
+    }
+  },
+  {
+    "session_id": "e77b8127-ade4-411c-9876-a9d8277b1757",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3-projects-proteinpilot-2025-08-05-180951/e77b8127-ade4-411c-9876-a9d8277b1757.jsonl",
+    "cwd": "/home/wv3/projects/proteinpilot-2025-08-05-180951",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": "/home/wv3/projects/proteinpilot-2025-08-05-180951/app/api/food/items/route.ts",
+      "content": "import { auth } from \"@clerk/nextjs/server\";\nimport { NextResponse } from \"next/server\";\nimport { prisma } from \"@/lib/prismadb\";\n\nexport async function GET(req: Request) {\n  try {\n    const { userId } = auth();\n    if (!userId) {\n      return new NextResponse(\"Unauthorized\", { status: 401 });\n    }\n\n    const { searchParams } = new URL(req.url);\n    const search = searchParams.get(\"search\");\n    const category = searchParams.get(\"category\");\n\n    const whereClause: any = {};\n\n    if (search) {\n      whereClause.name = {\n        contains: search,\n        mode: 'insensitive'\n      };\n    }\n\n    if (category) {\n      whereClause.category = category;\n    }\n\n    const foodItems = await prisma.foodItem.findMany({\n      where: whereClause,\n      orderBy: [\n        { verified: 'desc' }, // Verified items first\n        { name: 'asc' }\n      ],\n      take: 50 // Limit results for performance\n    });\n\n    return NextResponse.json(foodItems);\n  } catch (error) {\n    console.error(\"[FOOD_ITEMS_GET]\", error);\n    return new NextResponse(\"Internal Error\", { status: 500 });\n  }\n}\n\nexport async function POST(req: Request) {\n  try {\n    const { userId } = auth();\n    if (!userId) {\n      return new NextResponse(\"Unauthorized\", { status: 401 });\n    }\n\n    const body = await req.json();\n    const {\n      name,\n      brand,\n      category,\n      calories,\n      protein,\n      carbohydrates,\n      fat,\n      fiber,\n      sugar,\n      sodium,\n      servingSize,\n      servingUnit,\n    } = body;\n\n    if (!name || !category || calories === undefined || protein === undefined || carbohydrates === undefined || fat === undefined) {\n      return new NextResponse(\"Missing required fields\", { status: 400 });\n    }\n\n    const foodItem = await prisma.foodItem.create({\n      data: {\n        name,\n        brand,\n        category,\n        calories: parseFloat(calories),\n        protein: parseFloat(protein),\n        carbohydrates: parseFloat(carbohydrates),\n        fat: parseFloat(fat),\n        fiber: fiber ? parseFloat(fiber) : null,\n        sugar: sugar ? parseFloat(sugar) : null,\n        sodium: sodium ? parseFloat(sodium) : null,\n        servingSize: servingSize ? parseFloat(servingSize) : 100,\n        servingUnit: servingUnit || 'g',\n        verified: false // User-created items are not verified by default\n      }\n    });\n\n    return NextResponse.json(foodItem);\n  } catch (error) {\n    console.error(\"[FOOD_ITEMS_POST]\", error);\n    return new NextResponse(\"Internal Error\", { status: 500 });\n  }\n}"
+    },
+    "tool_response": {
+      "type": "create",
+      "filePath": "/home/wv3/projects/proteinpilot-2025-08-05-180951/app/api/food/items/route.ts",
+      "content": "import { auth } from \"@clerk/nextjs/server\";\nimport { NextResponse } from \"next/server\";\nimport { prisma } from \"@/lib/prismadb\";\n\nexport async function GET(req: Request) {\n  try {\n    const { userId } = auth();\n    if (!userId) {\n      return new NextResponse(\"Unauthorized\", { status: 401 });\n    }\n\n    const { searchParams } = new URL(req.url);\n    const search = searchParams.get(\"search\");\n    const category = searchParams.get(\"category\");\n\n    const whereClause: any = {};\n\n    if (search) {\n      whereClause.name = {\n        contains: search,\n        mode: 'insensitive'\n      };\n    }\n\n    if (category) {\n      whereClause.category = category;\n    }\n\n    const foodItems = await prisma.foodItem.findMany({\n      where: whereClause,\n      orderBy: [\n        { verified: 'desc' }, // Verified items first\n        { name: 'asc' }\n      ],\n      take: 50 // Limit results for performance\n    });\n\n    return NextResponse.json(foodItems);\n  } catch (error) {\n    console.error(\"[FOOD_ITEMS_GET]\", error);\n    return new NextResponse(\"Internal Error\", { status: 500 });\n  }\n}\n\nexport async function POST(req: Request) {\n  try {\n    const { userId } = auth();\n    if (!userId) {\n      return new NextResponse(\"Unauthorized\", { status: 401 });\n    }\n\n    const body = await req.json();\n    const {\n      name,\n      brand,\n      category,\n      calories,\n      protein,\n      carbohydrates,\n      fat,\n      fiber,\n      sugar,\n      sodium,\n      servingSize,\n      servingUnit,\n    } = body;\n\n    if (!name || !category || calories === undefined || protein === undefined || carbohydrates === undefined || fat === undefined) {\n      return new NextResponse(\"Missing required fields\", { status: 400 });\n    }\n\n    const foodItem = await prisma.foodItem.create({\n      data: {\n        name,\n        brand,\n        category,\n        calories: parseFloat(calories),\n        protein: parseFloat(protein),\n        carbohydrates: parseFloat(carbohydrates),\n        fat: parseFloat(fat),\n        fiber: fiber ? parseFloat(fiber) : null,\n        sugar: sugar ? parseFloat(sugar) : null,\n        sodium: sodium ? parseFloat(sodium) : null,\n        servingSize: servingSize ? parseFloat(servingSize) : 100,\n        servingUnit: servingUnit || 'g',\n        verified: false // User-created items are not verified by default\n      }\n    });\n\n    return NextResponse.json(foodItem);\n  } catch (error) {\n    console.error(\"[FOOD_ITEMS_POST]\", error);\n    return new NextResponse(\"Internal Error\", { status: 500 });\n  }\n}",
+      "structuredPatch": []
+    }
+  },
+  {
+    "session_id": "e77b8127-ade4-411c-9876-a9d8277b1757",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3-projects-proteinpilot-2025-08-05-180951/e77b8127-ade4-411c-9876-a9d8277b1757.jsonl",
+    "cwd": "/home/wv3/projects/proteinpilot-2025-08-05-180951",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "npm run dev > /dev/null 2>&1 &",
+      "description": "Start development server in background"
+    },
+    "tool_response": {
+      "stdout": "",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false
+    }
+  },
+  {
+    "session_id": "e77b8127-ade4-411c-9876-a9d8277b1757",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3-projects-proteinpilot-2025-08-05-180951/e77b8127-ade4-411c-9876-a9d8277b1757.jsonl",
+    "cwd": "/home/wv3/projects/proteinpilot-2025-08-05-180951",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "sleep 5 && curl -I http://localhost:3000 || echo \"Server not ready yet\"",
+      "description": "Check if development server is running"
+    },
+    "tool_response": {
+      "stdout": "HTTP/1.1 200 OK\r\nX-Powered-By: Express\r\nAccess-Control-Allow-Origin: *\r\nAccept-Ranges: bytes\r\nCache-Control: public, max-age=0\r\nLast-Modified: Sat, 02 Aug 2025 23:16:32 GMT\r\nETag: W/\"72c-1986d1298d3\"\r\nContent-Type: text/html; charset=UTF-8\r\nContent-Length: 1836\r\nDate: Tue, 05 Aug 2025 19:06:24 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0  1836    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false
+    }
   }
 ]
