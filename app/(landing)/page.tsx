@@ -1,12 +1,12 @@
-import { LandingNavbar } from "@/components/landing-navbar";
-import { LandingHero } from "@/components/landing-hero";
+import { LandingNavbarMock } from "@/components/landing-navbar-mock";
+import { LandingHeroMock } from "@/components/landing-hero-mock";
 import { LandingContent } from "@/components/landing-content";
 
 const LandingPage = () => {
   return (
     <div className="h-full ">
-      <LandingNavbar />
-      <LandingHero />
+      <LandingNavbarMock />
+      <LandingHeroMock />
       <LandingContent />
     </div>
   );

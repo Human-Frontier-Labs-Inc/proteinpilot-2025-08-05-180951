@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prismadb";
+import prisma from "@/lib/prismadb";
 import { mockAuth } from "@/lib/mock-auth";
 
 export async function GET(req: Request) {

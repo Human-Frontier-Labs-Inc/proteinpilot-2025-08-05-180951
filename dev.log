@@ -1,0 +1,67 @@
+
+> omniscient@0.1.0 dev
+> USE_MOCK_AUTH=true next dev
+
+ ⚠ Port 3000 is in use, trying 3001 instead.
+  ▲ Next.js 14.2.2
+  - Local:        http://localhost:3001
+
+ ✓ Starting...
+ ✓ Ready in 3.6s
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 710ms (168 modules)
+ ○ Compiling /api/food/items ...
+ ✓ Compiled /api/food/items in 2.2s (136 modules)
+ GET /api/food/items 200 in 2419ms
+ GET /api/food/items 200 in 21ms
+ ✓ Compiled /api/user/daily-stats in 369ms (139 modules)
+[DAILY_STATS_GET] Error: User profile not found
+    at getUserDailyStats (webpack-internal:///(rsc)/./lib/user-profile.ts:78:15)
+    at async GET (webpack-internal:///(rsc)/./app/api/user/daily-stats/route.ts:22:23)
+    at async /home/wv3/projects/proteinpilot-2025-08-05-180951/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:53191
+    at async e_.execute (/home/wv3/projects/proteinpilot-2025-08-05-180951/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:44492)
+    at async e_.handle (/home/wv3/projects/proteinpilot-2025-08-05-180951/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:54445)
+    at async doRender (/home/wv3/projects/proteinpilot-2025-08-05-180951/node_modules/next/dist/server/base-server.js:1377:42)
+    at async cacheEntry.responseCache.get.routeKind (/home/wv3/projects/proteinpilot-2025-08-05-180951/node_modules/next/dist/server/base-server.js:1599:28)
+    at async DevServer.renderToResponseWithComponentsImpl (/home/wv3/projects/proteinpilot-2025-08-05-180951/node_modules/next/dist/server/base-server.js:1507:28)
+    at async DevServer.renderPageComponent (/home/wv3/projects/proteinpilot-2025-08-05-180951/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/home/wv3/projects/proteinpilot-2025-08-05-180951/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/home/wv3/projects/proteinpilot-2025-08-05-180951/node_modules/next/dist/server/base-server.js:920:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/home/wv3/projects/proteinpilot-2025-08-05-180951/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/home/wv3/projects/proteinpilot-2025-08-05-180951/node_modules/next/dist/server/base-server.js:816:17)
+    at async /home/wv3/projects/proteinpilot-2025-08-05-180951/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/home/wv3/projects/proteinpilot-2025-08-05-180951/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/home/wv3/projects/proteinpilot-2025-08-05-180951/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/home/wv3/projects/proteinpilot-2025-08-05-180951/node_modules/next/dist/server/lib/router-server.js:174:21)
+    at async handleRequest (/home/wv3/projects/proteinpilot-2025-08-05-180951/node_modules/next/dist/server/lib/router-server.js:353:24)
+    at async requestHandlerImpl (/home/wv3/projects/proteinpilot-2025-08-05-180951/node_modules/next/dist/server/lib/router-server.js:377:13)
+    at async Server.requestListener (/home/wv3/projects/proteinpilot-2025-08-05-180951/node_modules/next/dist/server/lib/start-server.js:141:13)
+ GET /api/user/daily-stats 200 in 526ms
+ ✓ Compiled /api/food/log in 413ms (137 modules)
+ GET /api/food/log 200 in 571ms
+ POST /api/food/log 404 in 35ms
+ POST /api/food/log 404 in 27ms
+ GET /api/food/log 200 in 72ms
+ ✓ Compiled /api/user/daily-stats in 468ms (139 modules)
+ GET /api/user/daily-stats 200 in 671ms
+ POST /api/food/log 200 in 42ms
+ ✓ Compiled /api/food/items in 310ms (141 modules)
+ GET /api/food/items 200 in 507ms
+ POST /api/food/log 404 in 73ms
+ POST /api/food/log 200 in 67ms
+ ✓ Compiled in 808ms (141 modules)
+ POST /api/food/log 400 in 200ms
+ POST /api/food/log 400 in 53ms
+ ✓ Compiled in 477ms (139 modules)
+ POST /api/food/log 400 in 98ms
+ POST /api/food/log 400 in 18ms
+ DELETE /api/food/log?id=cmdyykaa50002x65q8thzfd94 200 in 34ms
+ DELETE /api/food/log?id=non-existent-id 404 in 48ms
+ GET /api/food/log 200 in 65ms
+ GET /api/food/log 200 in 38ms
+ GET /api/food/log 200 in 49ms
+ GET /api/food/log 200 in 57ms
+ GET /api/food/log 200 in 36ms
+ HEAD /api/food/log 200 in 43ms
+ POST /api/food/log 404 in 62ms
+ ✓ Compiled in 682ms (168 modules)

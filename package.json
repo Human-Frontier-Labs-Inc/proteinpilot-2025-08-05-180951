@@ -43,6 +43,9 @@
     "zod": "^3.22.4",
     "zustand": "^4.5.1"
   },
+  "prisma": {
+    "seed": "ts-node ./prisma/seed.ts"
+  },
   "devDependencies": {
     "@types/node": "20.12.7",
     "@types/react": "18.2.79",
@@ -52,6 +55,7 @@
     "postcss": "8.4.38",
     "prisma": "5.12.1",
     "tailwindcss": "3.4.3",
+    "ts-node": "^10.9.2",
     "typescript": "5.4.5"
   }
 }

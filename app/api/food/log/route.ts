@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prismadb";
+import prisma from "@/lib/prismadb";
 import { getOrCreateUserProfile } from "@/lib/user-profile";
 import { mockAuth } from "@/lib/mock-auth";
 
@@ -22,8 +22,13 @@ export async function POST(req: Request) {
       consumedAt 
     } = body;
 
-    if (!foodItemId || !quantity || !mealType) {
+    if (!foodItemId || quantity === undefined || quantity === null || !mealType) {
       return new NextResponse("Missing required fields", { status: 400 });
+    }
+
+    // Validate quantity is positive
+    if (quantity <= 0) {
+      return new NextResponse("Quantity must be greater than 0", { status: 400 });
     }
 
     // Get the food item to calculate nutrition

@@ -1,0 +1,44 @@
+[
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/projects/proteinpilot-2025-08-05-180951",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "just sedn a message to the claude code instance running in that view please -= - - do it correctly"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/projects/proteinpilot-2025-08-05-180951",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "great job - now its running - this is awesome -= now a few things we need to think about - thisthing is going to need to run  a db - - Im pretty sure it went ahead and spun up its own because it diudnt have supabase creds - thats a good things - - - lets actually have it move to always using local db - and tehn we nee to think about how I can use my clerk api key to programatically start projects etc ---oop - I jusrt found it - - - we nede to rsearch how to add mcp servers to global claude code instances and configure our cc with this - its awesome and going to be a great too for us here - - -- \u221a@clerk/clerk-mcp\n0.0.13 \u2022 Public \u2022 Published 2 months ago\nClerk MCP Server\n\u26a0\ufe0f Warning: This project is in active development and subject to rapid changes. Features and APIs may be modified frequently. If you have feedback or workflows you'd like to see supported, please get in touch via ai@clerk.dev\n\nModel Context Protocol (MCP) is a standardized protocol for managing context between large language models (LLMs) and external systems or services like Clerk.\n\nClerk's MCP server allows you to use any MCP Client (Claude Desktop, Cursor, Windsurf and many others) to use natural language and your LLM to accomplish things with Clerk.\n\nSetup\nRequirements\nNode.js >= v18.0.0\nMCP Client\nClerk Secret Key - get this from the Clerk project dashboard: Clerk Secret Key\n\u26a0\ufe0f Security Warning: Never share or commit your Clerk Secret Key. If exposed, immediately rotate it in your Clerk Dashboard. Add it to your .gitignore file and use environment variables in production.\n\nInstallation\nInstallation will vary depending on your client, but in most cases you'll need to add the JSON below to your MCP config file. Be sure to insert your Clerk API token.\n\n{\n  \"mcpServers\": {\n    \"Clerk\": {\n      \"command\": \"npx\",\n      \"args\": [\"@clerk/clerk-mcp@latest\"],\n      \"env\": {\n        \"CLERK_API_KEY\": \"YOUR CLERK API KEY\",\n        \"ALL_TOOLS\": \"false\",         // Optional\n        \"PROMPTS_DISABLED\": \"false\"   // Optional\n      }\n    }\n  }\n}\nFeatures\nThis project supports tools for all Clerk API endpoints by setting the ALL_TOOLS to \"true\". It also supports some prompt workflows tested in Cursor which allow you to quickstart Clerk applications.\n\nSupported Tools\nBy default, the following core Clerk API tools are enabled:\n\nBanUser\nCreateInvitation\nCreateUser\nDeleteUser\nGetSession\nGetUser\nGetUserList\nGetUsersCount\nListDomains\nListInvitations\nRevokeInvitation\nUpdateUser\nTo access additional tools:\n\nEnable ALL_TOOLS=true in your config\nRun the MCP server\nUse your MCP client's tool discovery feature\nSupported Prompts\nCreateClerkNextJSApp - follows our Next.js quickstart guide to setup a Next.js project using Clerk.\nCreateClerkReactApp - follows our React quickstart guide to setup a React project using Clerk.\nReadme\nKeywords\nclerkmcpauthenticationuser-managementapimodel-context-protocoloauthjwtsamlorganizationssessions\nPackage Sidebar\nInstall\nnpm i @clerk/clerk-mcp\n\nWeekly Downloads\n7\n\nVersion\n0.0.13\n\nLicense\nnone\n\nUnpacked Size\n516 kB\n\nTotal Files\n15\n\nLast publish\n2 months ago\n\nCollaborators\ncolinclerk\nbradenclerk\nnikosdouvlis\nchanioxaris\njescalan\nmwickett\nTry on RunKit\nReport malware\nFooter\nSupport\nHelp\nAdvisories\nStatus\nContact npm\nCompany\nAbout\nBlog\nPress\nTerms & Policies\nPolicies\nTerms of Use\nCode of Conduct\nPrivacy"
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/projects/proteinpilot-2025-08-05-180951",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "actually think about the flow - to iunfluence thisbuilding - we will have to modify the first and second and third and forth prompts in the tmux orchestrator workflow script we set up "
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/projects/proteinpilot-2025-08-05-180951",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "it should use prisma over the sql lite tough right?this is easily transferable to other dbs? "
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/projects/proteinpilot-2025-08-05-180951",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "can you add one more step - once all the phases in theprogress tracker are finished - i shouod commit the code to therepo - - not create a new one- - but git add git commit ad git push "
+  },
+  {
+    "session_id": "a80f88ce-547d-4584-beab-5888bc0c778c",
+    "transcript_path": "/home/wv3/.claude/projects/-home-wv3/a80f88ce-547d-4584-beab-5888bc0c778c.jsonl",
+    "cwd": "/home/wv3/projects/proteinpilot-2025-08-05-180951",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "no9 summary required - - please crate a little shim script real quick to commit the code we crated in the project thats open righ now - get i pushed up please"
+  }
+]

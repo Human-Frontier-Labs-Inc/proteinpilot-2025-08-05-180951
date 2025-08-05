@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
+// import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkProviderMock } from "@/components/clerk-provider-mock";
 import { constructMetadata } from "@/lib/metadata";
 
 import { Toaster } from 'sonner'
@@ -17,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProviderMock>
       <html lang="en" suppressHydrationWarning>
 
         <body className={inter.className}>
@@ -27,6 +28,6 @@ export default function RootLayout({
           {children}
         </body>
       </html>
-    </ClerkProvider>
+    </ClerkProviderMock>
   );
 }
